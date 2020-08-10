@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+     http://www.springframework.org/schema/context  
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <!-- guest -->
+    <bean id="guestSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:/config/mapper/guestMapper.xml"/>
+        <property name="typeAliasesPackage" value="com.bdsip.guest.model" />
+        <!-- 引入驼峰式配置文件 -->
+        <property name="configLocation" value="classpath:/config/spring/persistence/mybatis-config.xml"/>
+   		
+   		<!-- 扫描具体的1个实体，实体以其类名作为别名 
+        <property name="typeAliases" value="com.ibutler.student.model.Student" />
+        -->
+   
+    </bean>
+    
+    <!-- 配置方法1，MapperFactoryBean -->
+    <bean id="guestDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+     	<property name="sqlSessionFactory" ref="guestSqlSessionFactory"></property>
+        <property name="mapperInterface" value="com.bdsip.guest.dao.ifc.IGuestDao"></property>
+    </bean>   
+    
+    <!-- 配置方法2，MapperScannerConfigurer
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="studnetSqlSessionFactory" />
+        <property name="basePackage" value="com.ibutler.student.dao.ifc" />
+    </bean>
+	-->
+	
+</beans>

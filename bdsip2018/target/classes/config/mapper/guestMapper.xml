@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+			
+<mapper namespace="com.bdsip.guest.dao.ifc.IGuestDao">
+
+	<!-- 新增学生 -->
+	<insert id="addGuest" parameterType="Guest">
+        INSERT INTO guest ( name, phone, email, gender, job, job_title, company, create_time )
+        VALUES ( #{name}, #{phone}, #{email}, #{gender}, #{job}, #{jobTitle}, #{company}, NOW() )
+	</insert>
+	
+	<!-- 列表 -->
+	<select id="getGuestList" resultType="Guest">
+		SELECT 
+			id, name, phone, email, gender, job, job_title, company, 
+			DATE_FORMAT(create_time,'%x-%m-%d %H:%i:%s') createTime
+        FROM guest
+        ORDER BY id ASC
+	</select>
+	
+</mapper>
