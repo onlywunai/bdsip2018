@@ -3,6 +3,7 @@ package com.bdsip.guest.dao.ifc;
 import java.util.List;
 
 import com.bdsip.guest.model.Guest;
+import com.bdsip.guest.model.User;
 
 public interface IGuestDao {
 
@@ -19,4 +20,6 @@ public interface IGuestDao {
 	 * @return
 	 */
 	public List<Guest> getGuestList();
+	
+	public User getUser(User user);
 }

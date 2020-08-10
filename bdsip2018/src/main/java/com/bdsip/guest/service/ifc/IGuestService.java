@@ -3,6 +3,7 @@ package com.bdsip.guest.service.ifc;
 import java.util.List;
 
 import com.bdsip.guest.model.Guest;
+import com.bdsip.guest.model.User;
 
 public interface IGuestService {
 
@@ -19,5 +20,7 @@ public interface IGuestService {
 	 * @return
 	 */
 	public List<Guest> getGuestList();
+	
+	public User getUser(User user);
 
 }

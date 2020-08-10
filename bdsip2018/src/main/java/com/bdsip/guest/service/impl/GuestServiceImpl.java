@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bdsip.guest.dao.ifc.IGuestDao;
 import com.bdsip.guest.model.Guest;
+import com.bdsip.guest.model.User;
 import com.bdsip.guest.service.ifc.IGuestService;
 
 @Service("guestService")
@@ -24,6 +25,11 @@ public class GuestServiceImpl implements IGuestService {
 	@Override
 	public List<Guest> getGuestList() {
 		return guestDao.getGuestList();
+	}
+	
+	@Override
+	public User getUser(User user) {
+		return guestDao.getUser(user);
 	}
 
 }

@@ -18,5 +18,10 @@
         FROM guest
         ORDER BY id ASC
 	</select>
+	<select id="getUser" resultType="User" parameterType="User">
+		SELECT * FROM admin
+		where username=#{username} and password=#{password}
+        ORDER BY id ASC
+	</select>
 	
 </mapper>
