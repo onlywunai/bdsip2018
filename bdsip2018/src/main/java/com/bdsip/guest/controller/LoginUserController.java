@@ -19,7 +19,7 @@ public class LoginUserController {
 	
 	@RequestMapping(value = "/login.do", produces = "application/json;charset=UTF-8")
 	public ModelAndView login(User user,  HttpServletRequest request,HttpServletResponse response) {
-		
+		//
 		User re = userService.getUser(user);
 		if(re != null) {
 			request.getSession().setAttribute("user", re);
